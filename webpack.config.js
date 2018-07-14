@@ -1,10 +1,9 @@
 const path = require('path');
 
 module.exports = {
-	devtool: 'inline-source-map',
-	mode: 'development',
+	mode: 'production',
 	entry: {
-		'strplace': './src/strplace.ts',
+		'strplace.bundle': './src/strplace.ts',
 		'strplace.spec': './src/strplace.spec.ts'
 	},
 	output: {

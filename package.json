@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "description": "a string replacing engine",
   "main": "dist/strplace.js",
+  "types": "dist/strplace.d.ts",
   "scripts": {
     "test": "jasmine",
     "testBrowser": "karma start",
+    "build": "webpack && tsc -p config/production/tsconfig.es2015.json",
     "watch": "webpack --watch"
   },
   "author": "René Schwarzinger",
