@@ -2,8 +2,8 @@
   "name": "strplace",
   "version": "0.0.1",
   "description": "a string replacing engine",
-  "main": "dist/strplace.js",
-  "types": "dist/strplace.d.ts",
+  "main": "./dist/strplace.js",
+  "types": "./dist/strplace.d.ts",
   "scripts": {
     "test": "jasmine",
     "testBrowser": "karma start",
