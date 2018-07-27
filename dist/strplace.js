@@ -33,7 +33,7 @@ export function replaceComplex(complexKeys, string) {
             if (res1 !== null) {
                 regex = new RegExp(complex.keys[1], complex.flags);
                 let res2 = regex.exec(string);
-                let removeEscapesFromKeys = [complex.keys[0].replace('\\', ''), complex.keys[1].replace('\\', '')];
+                let removeEscapesFromKeys = [complex.keys[0].replace((new RegExp('\\\\', '')), ''), complex.keys[1].replace((new RegExp('\\\\', '')), '')];
                 if (res2 !== null) {
                     string = string.slice(0, res1.index) + complex.replacer(string.slice(res1.index + removeEscapesFromKeys[0].length, res2.index)) + string.slice(res2.index + removeEscapesFromKeys[1].length);
                 }
