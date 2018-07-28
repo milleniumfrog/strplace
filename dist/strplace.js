@@ -1,20 +1,20 @@
-export function replaceSingle(key, string, replaceContent, flags) {
+export function replaceSingle(key, string, replaceContent, flags, passArguments) {
     flags = flags || 'g';
     let regex = new RegExp(key, flags);
     let res;
     let counter = 0;
     while ((res = regex.exec(string.slice(counter))) !== null) {
-        string = string.replace(key, typeof replaceContent === 'function' ? replaceContent() : replaceContent);
+        key = key.replace((new RegExp('\\\\', 'g')), '');
+        string = string.replace(key, typeof replaceContent === 'function' ? replaceContent('', passArguments) : replaceContent);
         ++counter;
     }
     return string;
 }
 ;
-export function replaceComplex(complexKeys, string) {
+export function replaceComplex(complexKeys, string, passArguments) {
     for (let complex of complexKeys) {
         if (complex.keys[1] === undefined) {
-            string = complex.called !== true ? replaceSingle(complex.keys[0], string, complex.replacer, complex.flags) : string;
-            complex.called = true;
+            string = complex.called !== true ? replaceSingle(complex.keys[0], string, (args, toPass) => { return complex.replacer('', toPass); }, complex.flags, passArguments) : string;
         }
         else {
             let maxIndex = -1;
@@ -33,9 +33,9 @@ export function replaceComplex(complexKeys, string) {
             if (res1 !== null) {
                 regex = new RegExp(complex.keys[1], complex.flags);
                 let res2 = regex.exec(string);
-                let removeEscapesFromKeys = [complex.keys[0].replace((new RegExp('\\\\', '')), ''), complex.keys[1].replace((new RegExp('\\\\', '')), '')];
+                let removeEscapesFromKeys = [complex.keys[0].replace((new RegExp('\\\\', 'g')), ''), complex.keys[1].replace((new RegExp('\\\\', 'g')), '')];
                 if (res2 !== null) {
-                    string = string.slice(0, res1.index) + complex.replacer(string.slice(res1.index + removeEscapesFromKeys[0].length, res2.index)) + string.slice(res2.index + removeEscapesFromKeys[1].length);
+                    string = string.slice(0, res1.index) + complex.replacer(string.slice(res1.index + removeEscapesFromKeys[0].length, res2.index), passArguments) + string.slice(res2.index + removeEscapesFromKeys[1].length);
                 }
             }
         }
