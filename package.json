@@ -2,8 +2,8 @@
   "name": "strplace",
   "version": "0.0.3",
   "description": "a string replacing engine",
-  "main": "dist/strplace.js",
-  "types": "dist/strplace.d.ts",
+  "main": "./dist/strplace.js",
+  "types": "./dist/strplace.d.ts",
   "scripts": {
     "test": "jasmine",
     "testBrowser": "karma start",
@@ -11,7 +11,7 @@
     "watch": "webpack --watch"
   },
   "author": "René Schwarzinger",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/jasmine": "^2.8.8",
     "jasmine": "^3.1.0",
