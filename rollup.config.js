@@ -15,7 +15,7 @@ const plugins = [
 
 export default [
     {
-        input: './dist/org/strplace.js',
+        input: './dist/strplace.js',
         output: {
             file: './dist/strplace.umd.js',
             format: 'umd',
@@ -25,7 +25,7 @@ export default [
         plugins: plugins
     },
     {
-        input: './dist/org/strplace.js',
+        input: './dist/strplace.js',
         output: {
             file: './dist/strplace.native.js',
             format: 'esm',
