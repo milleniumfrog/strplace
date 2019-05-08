@@ -2,4 +2,7 @@ node_modules/
 debug/
 .vscode
 dist/**/*.spec.js
+dist/**/*.spec.js.map
+dist/**/*.spec.d.ts
 tmp
+.nyc_output/
