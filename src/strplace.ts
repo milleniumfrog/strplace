@@ -1,5 +1,4 @@
-export function replaceSingle( key: string, string: string, replaceContent: any, flags?: string, passArguments?: any): string 
-{
+export function replaceSingle( key: string, string: string, replaceContent: any, flags?: string, passArguments?: any): string {
 	// set default flags
 	flags = flags || 'g';
 	// create Regex
@@ -23,8 +22,7 @@ export interface ComplexKey {
 }
 
 
-export function replaceComplex ( complexKeys: Array<ComplexKey>, string: string, passArguments?: any) : string
-{
+export function replaceComplex ( complexKeys: Array<ComplexKey>, string: string, passArguments?: any) : string {
 	for ( let complex of complexKeys )
 	{
 		// single key placeholders

@@ -2,3 +2,4 @@ node_modules/
 debug/
 .vscode
 dist/**/*.spec.js
+tmp
